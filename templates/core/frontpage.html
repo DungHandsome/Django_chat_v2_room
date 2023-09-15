@@ -1,0 +1,10 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+<div class="text-center mt-3">
+    <h1 class="text-dark">Django Chat</h1>
+    <p class="lead" style="color: #000;">Please <a href="{% url 'login' %}" style="color: #285e61;">login</a> or <a href="{% url 'signup' %}" style="color: #285e61;">signup</a>!</p>
+</div>
+{% endblock %}

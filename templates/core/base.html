@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %} | Django-chat</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+    <link rel="shortcut icon" href="{% static 'image/icon.png' %}" type="image/x-icon">
+</head>
+<body style="background-color: #90e0ef;">
+    <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <img src="{% static 'image/icon.png' %}" alt="icon" width="60px">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                
+              </ul>
+              {% if user.is_authenticated %}
+              <form class="d-flex" role="search">
+                <a class="btn btn-dark me-4" href="{% url 'rooms' %}">Rooms</a>
+                <a class="btn btn-outline-dark" style="text-decoration: none; color: #fff;" href="{% url 'logout' %}">Logout</a>
+              </form>
+              {% else %}
+                
+                <form class="d-flex" role="search">
+                  <a class="btn btn-dark me-4" href="{% url 'signup' %}">Sign Up</a>
+                  <a class="btn btn-outline-dark" style="text-decoration: none; color: #fff;" href="{% url 'login' %}">Login</a>
+                </form>
+              {% endif %}
+            </div>
+          </div>
+    </nav>
+    {% block content %}{% endblock %}
+    {% block scripts %}{% endblock %}
+    <script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+</body>
+</html>
